@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from builtins import bytes
 import struct
 
 from apkutils.dex.util import signExtend
@@ -21,7 +20,7 @@ from apkutils.dex.util import signExtend
 class Reader:
 
     def __init__(self, data, pos=0):
-        self.data = bytes(data)
+        self.data = data
         #print("len of self.data: %s,part: '%s'"%(len(self.data),self.data[:10]))
         self.pos = pos
 

@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 #coding=utf-8
 
+from builtins import bytes
 import binascii
 import xml
 
@@ -35,7 +36,7 @@ class APK:
         try:
             with apkfile.ZipFile(self.apk_path, 'r') as z:
                 for name in z.namelist():
-                    data = z.read(name)
+                    data = bytes(z.read(name))
                     if name.startswith('classes') and name.endswith('.dex') \
                             and Magic(data).get_type() == 'dex':
                         dex_file = DexFile(data)
