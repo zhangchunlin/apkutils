@@ -2,3 +2,4 @@ xmltodict
 pyelftools
 pyOpenSSL
 six
+future

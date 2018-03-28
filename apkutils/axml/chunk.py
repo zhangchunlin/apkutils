@@ -2,6 +2,7 @@
 #coding=utf-8
 
 from struct import pack, unpack
+from builtins import bytes
 
 # NS_ANDROID_URI = 'http://schemas.android.com/apk/res/android'
 
@@ -43,7 +44,7 @@ class StringPoolChunk(object):
         self.m_stringIndices = []
         self.m_styleIndices = []
         # 字符串池
-        self.m_charbuff = ""
+        self.m_charbuff = b""
         # style pan 池
         self.m_styles = []
 
@@ -65,7 +66,7 @@ class StringPoolChunk(object):
             size = self.stylesStart - self.stringsStart
 
         # 字符串池
-        self.m_charbuff = buff.read(size)
+        self.m_charbuff = bytes(buff.read(size))
 
         if self.stylesStart != 0:
             size = self.chunkSize - self.stylesStart

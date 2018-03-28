@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from builtins import bytes
 import struct
 
 from apkutils.dex.util import signExtend
@@ -20,7 +21,8 @@ from apkutils.dex.util import signExtend
 class Reader:
 
     def __init__(self, data, pos=0):
-        self.data = data
+        self.data = bytes(data)
+        #print("len of self.data: %s,part: '%s'"%(len(self.data),self.data[:10]))
         self.pos = pos
 
     def read(self, size):
@@ -54,13 +56,14 @@ class Reader:
 
     def u64(self):
         '''
-        8bytes FF FF FF FF FF FF FF FF 
+        8bytes FF FF FF FF FF FF FF FF
         '''
         return self._unpack('<Q')
 
     def _leb128(self, signed=False):
         result = 0
         size = 0
+        #print("_leb128:%s"%repr(self.data[self.pos:self.pos+10]))
         while self.data[self.pos] >> 7:
             result ^= (self.data[self.pos] & 0x7f) << size
             size += 7

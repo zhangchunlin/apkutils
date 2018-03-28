@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 #coding=utf-8
 
+from builtins import object
 from struct import pack, unpack
 from xml.dom import minidom
 from xml.sax.saxutils import escape
