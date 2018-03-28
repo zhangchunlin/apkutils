@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+#coding=utf-8
+
 resources = {
     'style': {
         'Animation': 16973824,

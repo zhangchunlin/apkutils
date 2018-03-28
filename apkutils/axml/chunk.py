@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+#coding=utf-8
+
 from struct import pack, unpack
 
 # NS_ANDROID_URI = 'http://schemas.android.com/apk/res/android'

@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+#coding=utf-8
+
 """
 from https://github.com/python/cpython/tree/3.6/Lib/zipfile.py
 

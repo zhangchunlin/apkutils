@@ -1,3 +1,6 @@
+#! /usr/bin/env python3
+#coding=utf-8
+
 
 from OpenSSL import crypto
 from OpenSSL.crypto import _lib, _ffi, X509
