@@ -5,7 +5,7 @@ import binascii
 import xml
 
 import xmltodict
-from cigam import Magic
+from .extlib.cigam import Magic
 
 from apkutils import apkfile
 from apkutils.axml.axmlparser import AXML
@@ -130,7 +130,7 @@ class APK:
                             raise e
         except Exception as e:
             raise e
-    
+
     def get_certs(self):
         if not self.certs:
             self._init_certs()

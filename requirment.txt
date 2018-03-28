@@ -1,4 +1,3 @@
 xmltodict
-cigam
 pyelftools
-OpenSSL
+pyOpenSSL

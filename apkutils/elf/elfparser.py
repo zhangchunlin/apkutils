@@ -8,7 +8,7 @@ from elftools.elf.elffile import ELFFile
 from elftools.common.exceptions import ELFError
 from elftools.common.py3compat import byte2int
 
-from cigam import Magic
+from extlib.cigam import Magic
 
 
 class ELF():

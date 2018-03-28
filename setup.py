@@ -36,7 +36,6 @@ setup(
 
     install_requires=[
         "pyelftools",
-        "cigam",
         "xmltodict",
     ],
 )
