@@ -34,8 +34,26 @@ class Certificate:
         if not pycerts:
             return None
 
-        for cert in pycerts:
-            name = str(cert.get_subject())[19:-2].replace('/', ', ')
-            md5 = cert.digest('md5').decode().replace(':', '')
+        def X509Name2dict(o):
+            #http://pyopenssl.sourceforge.net/pyOpenSSL.html/openssl-x509name.html
+            return dict(countryName=o.countryName,
+                stateOrProvinceName=o.stateOrProvinceName,
+                localityName=o.localityName,
+                organizationName=o.organizationName,
+                organizationalUnitName=o.organizationalUnitName,
+                commonName=o.commonName,
+                emailAddress=o.emailAddress)
 
-            self.content.append((name, md5))
+        for cert in pycerts:
+
+            self.content.append(
+                dict(issuer=X509Name2dict(cert.get_issuer()),
+                    serial_number=cert.get_serial_number(),
+                    subject=X509Name2dict(cert.get_subject()),
+                    version=cert.get_version(),
+                    md5_digest=cert.digest('md5').decode(),
+                    sha1_digest=cert.digest('sha1').decode(),
+                    sha256_digest=cert.digest('sha256').decode(),
+                    has_expired=cert.has_expired()
+                )
+            )
