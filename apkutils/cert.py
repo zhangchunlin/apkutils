@@ -48,11 +48,10 @@ class Certificate:
                 organizationalUnitName=o.organizationalUnitName,
                 commonName=o.commonName,
                 emailAddress=o.emailAddress)
-
         for cert in pycerts:
             self.content.append(
                 dict(issuer=X509Name2dict(cert.get_issuer()),
-                    serial_number=cert.get_serial_number(),
+                    serial_number=str(cert.get_serial_number()),
                     subject=X509Name2dict(cert.get_subject()),
                     version=cert.get_version(),
                     md5_digest=cert.digest('md5').decode(),
